@@ -10,8 +10,9 @@ namespace MorsodItalia.BL
 {
    public class Contexto: DbContext
     {
+        //public Contexto(): base()
         public Contexto() : base(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDBFilename=" +
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\MorsodItaliaDB.mdf")
+        Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\MorsodItaliaDB.mdf")
         {
 
         }
