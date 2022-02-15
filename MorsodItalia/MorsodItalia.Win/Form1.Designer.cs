@@ -218,7 +218,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 415);
+            this.ClientSize = new System.Drawing.Size(524, 365);
             this.Controls.Add(this.listadeProductosDataGridView);
             this.Controls.Add(this.listadeProductosBindingNavigator);
             this.Name = "Form1";

@@ -1,0 +1,27 @@
+﻿@model List<MorsodItalia.BL.Categoria>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categorias</h2>
+
+<table class="table table-bordered table-hover" >
+    <thead>
+        <tr>
+            <th>
+                Código
+            </th>
+            <th>
+                Descripción
+            </th>
+        </tr>
+    </thead>
+    @foreach (var categoria in Model)
+    {
+        <tr>
+            <td>@categoria.Id</td>
+            <td>@categoria.Descripcion</td>
+        </tr>
+    }
+   
+</table>
