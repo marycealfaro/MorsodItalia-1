@@ -9,19 +9,19 @@ namespace MorsodItalia.WebAdmin.Controllers
 {
     public class ProductosController : Controller
     {
-        ProductosBL _prodctosBL;
+        ProductosBL _productosBL;
         CategoriasBL _categoriasBL;
 
         public ProductosController()
         {
-            _prodctosBL = new ProductosBL();
+            _productosBL = new ProductosBL();
             _categoriasBL = new CategoriasBL();
         }
 
         // GET: Productos
         public ActionResult Index()
         {
-            var listadeProductos = _prodctosBL.ObtenerProductos();
+            var listadeProductos = _productosBL.ObtenerProductos();
 
             return View(listadeProductos);
         }
@@ -31,7 +31,7 @@ namespace MorsodItalia.WebAdmin.Controllers
             var nuevoProducto = new Producto();
             var categorias = _categoriasBL.ObtenerCategorias();
 
-            ViewBag.ListaCategorias = new SelectList(categorias, "Id", "Descripcion");
+            ViewBag.CategoriaId = new SelectList(categorias, "Id", "Descripcion");
 
             return View(nuevoProducto);
         }
@@ -39,14 +39,14 @@ namespace MorsodItalia.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Crear(Producto producto)
         {
-            _prodctosBL.GuardarProducto(producto);
+            _productosBL.GuardarProducto(producto);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult Editar(int id)
         {
-            var producto = _prodctosBL.ObtenerProducto(id);
+            var producto = _productosBL.ObtenerProducto(id);
             var categorias = _categoriasBL.ObtenerCategorias();
 
             ViewBag.CategoriaId = new SelectList(categorias, "Id", "Descripcion", producto.CategoriaId);
@@ -57,21 +57,21 @@ namespace MorsodItalia.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Editar(Producto producto)
         {
-            _prodctosBL.GuardarProducto(producto);
+            _productosBL.GuardarProducto(producto);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult Detalle(int id)
         {
-            var producto = _prodctosBL.ObtenerProducto(id);
+            var producto = _productosBL.ObtenerProducto(id);
 
             return View(producto);
         }
 
         public ActionResult Eliminar(int id)
         {
-            var producto = _prodctosBL.ObtenerProducto(id);
+            var producto = _productosBL.ObtenerProducto(id);
 
             return View(producto);
         }
@@ -79,7 +79,7 @@ namespace MorsodItalia.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Eliminar(Producto producto)
         {
-            _prodctosBL.EliminarProducto(producto.Id);
+            _productosBL.EliminarProducto(producto.Id);
 
             return RedirectToAction("Index");
         }
