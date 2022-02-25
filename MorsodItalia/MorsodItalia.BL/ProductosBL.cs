@@ -31,8 +31,7 @@ namespace MorsodItalia.BL
             if(producto.Id == 0)
             {
                 _contexto.Productos.Add(producto);
-            }
-            else
+            } else
             {
                 var productoExistente = _contexto.Productos.Find(producto.Id);
 
@@ -47,7 +46,8 @@ namespace MorsodItalia.BL
 
         public Producto ObtenerProducto(int id)
         {
-            var producto = _contexto.Productos.Include("Categoria").FirstOrDefault(p >= p.Id == id);
+            var producto = _contexto.Productos
+                .Include("Categoria").FirstOrDefault(p => p.Id == id);
             
             return producto;
         }
@@ -57,7 +57,6 @@ namespace MorsodItalia.BL
             var producto = _contexto.Productos.Find(id);
 
             _contexto.Productos.Remove(producto);
-
             _contexto.SaveChanges();
         }
     }
